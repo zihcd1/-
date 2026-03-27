@@ -1,0 +1,5 @@
+{
+  "name": "PharmaSight 决策沙盘",
+  "description": "制药管线管理的战略决策仪表盘，具有交互式象限图、风险建模和时间旅行模拟功能。",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-pharma-bg: #0a0a12;
+  --color-pharma-card: rgba(255, 255, 255, 0.03);
+  --color-pharma-border: rgba(255, 255, 255, 0.08);
+  --color-pharma-accent: #3b82f6;
+  --color-pharma-purple: #8b5cf6;
+  --color-pharma-warning: #f97316;
+  --color-pharma-text-dim: #94a3b8;
+  --color-pharma-morandi-blue: #7c99ac;
+  --color-pharma-glow: rgba(59, 130, 246, 0.3);
+}
+
+@layer base {
+  body {
+    @apply bg-pharma-bg text-white antialiased overflow-hidden;
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-3xl border border-white/[0.08] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.3)];
+  }
+
+  .glass-card-hover {
+    @apply hover:bg-white/[0.05] hover:border-white/[0.12] transition-all duration-500;
+  }
+
+  .nav-rail {
+    @apply w-20 h-full border-r border-white/[0.05] flex flex-col items-center py-8 bg-black/20 backdrop-blur-3xl z-50;
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+  }
+
+  .slider-thumb-custom {
+    @apply appearance-none w-full bg-transparent;
+  }
+
+  .slider-thumb-custom::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 rounded-full bg-white shadow-[0_0_15px_rgba(59,130,246,0.6)] cursor-pointer border-[3px] border-pharma-accent transition-all hover:scale-125 active:scale-110;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  .breathing-glow {
+    animation: glow 3s infinite ease-in-out;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px var(--color-pharma-glow));
+    opacity: 0.6;
+  }
+  50% {
+    filter: drop-shadow(0 0 12px var(--color-pharma-glow));
+    opacity: 1;
+  }
+}
+
+/* Recharts Customization */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  @apply stroke-white/5;
+}
+
+.recharts-text {
+  @apply fill-pharma-text-dim text-[10px] font-mono font-bold;
+}
+
+.recharts-tooltip-cursor {
+  @apply fill-white/5;
+}
